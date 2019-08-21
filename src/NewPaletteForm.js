@@ -11,18 +11,19 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from '@material-ui/core/Button';
+import DraggableColorBox from './DraggableColorBox';
 import { ChromePicker } from 'react-color';
 
 const drawerWidth = 400;
 
 const styles = theme => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
   },
   appBarShift: {
@@ -30,44 +31,45 @@ const styles = theme => ({
     marginLeft: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
+      duration: theme.transitions.duration.enteringScreen
     }),
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   },
   hide: {
-    display: 'none',
+    display: 'none'
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0,
+    flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: drawerWidth
   },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
     padding: '0 8px',
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-end'
   },
   content: {
     flexGrow: 1,
+    height: 'calc(100vh - 64px)',
     padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+    marginLeft: -drawerWidth
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
+      duration: theme.transitions.duration.enteringScreen
     }),
-    marginLeft: 0,
+    marginLeft: 0
   },
 });
 
@@ -133,7 +135,7 @@ class NewPaletteForm extends Component {
           anchor='left'
           open={open}
           classes={{
-            paper: classes.drawerPaper,
+            paper: classes.drawerPaper
           }}
         >
           <div className={classes.drawerHeader}>
@@ -164,15 +166,13 @@ class NewPaletteForm extends Component {
         </Drawer>
         <main
           className={classNames(classes.content, {
-            [classes.contentShift]: open,
+            [classes.contentShift]: open
           })}
         >
           <div className={classes.drawerHeader} />
-          <ul>
-            {colors.map(color => (
-              <li style={{ backgroundColor: color }}>{color}</li>
-            ))}
-          </ul>
+          {colors.map(color => (
+            <DraggableColorBox color={color} />
+          ))}
         </main>
       </div>
     );
