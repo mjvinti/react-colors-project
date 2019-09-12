@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -9,7 +9,7 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { Picker } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
 
-class PaletteMetaForm extends Component {
+class PaletteMetaForm extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { stage: "form", newPaletteName: "" };
